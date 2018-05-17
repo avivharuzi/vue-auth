@@ -3,10 +3,7 @@ import router from '@/router/index'
 
 import * as types from '@/store/types'
 
-import {
-  LOGIN_URL,
-  CHECK_TOKEN_URL
-} from '@/constants/urls'
+import { LOGIN_URL, CHECK_TOKEN_URL } from '@/constants/urls'
 
 const state = {
   token: localStorage.getItem('user_token'),
