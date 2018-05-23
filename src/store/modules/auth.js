@@ -1,5 +1,5 @@
 import http from '@/services/http'
-import router from '@/router/index'
+import router from '@/router'
 
 import * as types from '@/store/types'
 
@@ -27,7 +27,7 @@ const mutations = {
     state.isLoggedIn = false
     state.userData = null
     localStorage.removeItem('user_token')
-    router.push('/')
+    router.push('/login')
   }
 }
 
@@ -37,9 +37,9 @@ const actions = {
       http.post(LOGIN_URL, user).then(res => {
           let data = res.data.data;
           if (data) {
-            context.commit(types.SET_TOKEN, date.token)
+            context.commit(types.SET_TOKEN, data.token)
             context.commit(types.SET_IS_LOGGED_IN)
-            context.commit(types.SET_USER_DATA, date.userData)
+            context.commit(types.SET_USER_DATA, data.userData)
             router.push('/')
             resolve(true)
           } else {

@@ -3,7 +3,11 @@ import Router from 'vue-router'
 
 // Pages
 import Home from '@/pages/Home'
-import ErrorPage from '@/pages/ErrorPage'
+import Login from '@/pages/Login'
+import About from '@/pages/About'
+
+// Guards
+import { authGuard } from '@/services/guards'
 
 Vue.use(Router)
 
@@ -15,14 +19,27 @@ const router = new Router({
       component: Home,
       meta: {
         title: 'Home'
+      },
+      beforeEnter: (to, from, next) => authGuard(next)
+    },
+    {
+      path: '/login',
+      component: Login,
+      meta: {
+        title: 'Login'
       }
     },
     {
-      path: '*',
-      component: ErrorPage,
+      path: '/about',
+      component: About,
       meta: {
-        title: '404 - Page Not Found'
-      }
+        title: 'About'
+      },
+      beforeEnter: (to, from, next) => authGuard(next)
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })
@@ -32,4 +49,4 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-export default router;
+export default router
