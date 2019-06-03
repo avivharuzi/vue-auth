@@ -1,3 +1,3 @@
 # Vue Auth
 
-A lightweight validation library.
+Simple Vue.js Auth files project.
