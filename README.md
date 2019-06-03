@@ -1,2 +1,3 @@
-# vue-auth
-simple vue.js auth files
+# Vue Auth
+
+A lightweight validation library.
